@@ -8,7 +8,7 @@ app = Flask(__name__)
 ##  Loading the model
 
 regmodel = pickle.load(open("reg_model.pkl","rb"))
-
+scale = pickle.load(open("scaling.pkl","rb"))
 @app.route("/")
 def home():
     return render_template("home.html")
