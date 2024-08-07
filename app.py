@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 ##  Loading the model
 
-regmodel = pickle(open("reg_model.pkl","rb"))
+regmodel = pickle.load(open("reg_model.pkl","rb"))
 
 @app.route("/")
 def home():
@@ -17,4 +17,11 @@ def home():
 def predict_api():
     data=request.json["data"]
     print(data)
-    
+    print(np.array(list(data.values())).reshape(1,-1))
+    new_data = scalor.transform(np.array(list(data.values())).reshape(1,-1))
+    output = regmodel.predict(new_data)
+    print(output[0])
+    return jsonify(output[0])
+
+if __name__ == "__main__":
+    app.run(debug=True)
