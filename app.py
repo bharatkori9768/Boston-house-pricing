@@ -25,3 +25,12 @@ def predict_api():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+
+# @app.route("/predict_api",methods = ['POST'])
+# def predict_api():
+#     data = [float(x) for x in request.from.values()]
+#     final_input=scale.transform(np.array(data).reshape(1,-1))
+#     print(final_input)
+#     output = regmodel.predict(final_input)[0]
+#     return render_template("home.html",prediction_text = "The Hosue price Prediction is{}".format(output))
